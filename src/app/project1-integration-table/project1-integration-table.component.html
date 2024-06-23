@@ -1,0 +1,28 @@
+<div>
+    <h1>Integration Diagram Data of HHT</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Project Name</th>
+                <th>Source to Destination</th>
+                <th>Destination to Source</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of rows; let i = index">
+                <td><input [(ngModel)]="row.projectName" [disabled]="!row.editable" /></td>
+                <td><input [(ngModel)]="row.sourceToDest" [disabled]="!row.editable" /></td>
+                <td><input [(ngModel)]="row.destToSource" [disabled]="!row.editable" /></td>
+                <td>
+                    <button (click)="modifyRow(i)">{{row.editable ? 'Save' : 'Modify'}}</button>
+                    <button (click)="deleteRow(i)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button (click)="addRow()">Add Row</button>
+    <button (click)="generateJSON()">Generate JSON</button>
+    <pre>{{ jsonOutput }}</pre>
+</div>
+
